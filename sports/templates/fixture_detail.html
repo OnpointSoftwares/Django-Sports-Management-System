@@ -1,0 +1,19 @@
+<!-- sports/templates/sports/fixture_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Fixture Details{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Fixture Details</h1>
+<div class="card">
+    <div class="card-header">
+        {{ fixture.team_home }} vs {{ fixture.team_away }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Date: {{ fixture.match_date|date:"D, d M Y H:i" }}</h5>
+        <p class="card-text">Venue: {{ fixture.venue }}</p>
+        <p class="card-text">Result: {{ fixture.result|default:"Not yet available" }}</p>
+        <a href="{% url 'index' %}" class="btn btn-secondary">Back to Fixtures</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!-- sports/templates/sports/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm mt-5">
+                <!-- Card Image -->
+                <img src="{% static 'sports/images/login-bg.jpg' %}" class="card-img-top" alt="Login Banner" style="height: 200px; object-fit: cover;">
+                
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Login to Your Account</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Username Input -->
+                        <div class="form-group mb-3">
+                            <label for="username"><i class="bi bi-person-circle"></i> Username</label>
+                            <input type="text" class="form-control" name="username" id="username" required>
+                        </div>
+
+                        <!-- Password Input -->
+                        <div class="form-group mb-3">
+                            <label for="password"><i class="bi bi-lock"></i> Password</label>
+                            <input type="password" class="form-control" name="password" id="password" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </button>
+                    </form>
+
+                    <!-- Forgot Password Link -->
+                    <p class="text-center mt-3">
+                        <a href="" class="text-decoration-none">Forgot your password?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

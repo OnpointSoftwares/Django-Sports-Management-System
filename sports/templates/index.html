@@ -1,0 +1,86 @@
+<!-- sports/templates/sports/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Upcoming Fixtures{% endblock %}
+
+{% block content %}
+{% load static %}
+<style>
+    .fixture-header {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .fixture-table {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table thead th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #28a745;
+        border-color: #28a745;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+
+    .no-fixtures {
+        text-align: center;
+        font-style: italic;
+        color: #888;
+    }
+
+    /* Optional: Adding a background image to the page */
+    body {
+        background-image: url("{% static 'sports/img/sports-bg.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        height: auto;
+    }
+</style>
+
+<div class="container my-5 fixture-table">
+    <h1 class="fixture-header mb-4">Upcoming Fixtures</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Home Team</th>
+                <th scope="col">Away Team</th>
+                <th scope="col">Date</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fixture in fixtures %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ fixture.team_home }}</td>
+                <td>{{ fixture.team_away }}</td>
+                <td>{{ fixture.match_date|date:"D, d M Y H:i" }}</td>
+                <td>{{ fixture.venue }}</td>
+                <td><a href="{% url 'fixture_detail' fixture.id %}" class="btn btn-primary btn-sm">View</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="no-fixtures">No fixtures scheduled.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

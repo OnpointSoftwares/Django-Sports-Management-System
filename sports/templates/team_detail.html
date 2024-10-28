@@ -1,0 +1,33 @@
+<!-- sports/templates/sports/team_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ team.name }} Details{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ team.name }} - Players</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Player Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in players %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ player.name }}</td>
+            <td>{{ player.position }}</td>
+            <td>{{ player.age }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No players in this team.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'team_list' %}" class="btn btn-secondary">Back to Teams</a>
+{% endblock %}
