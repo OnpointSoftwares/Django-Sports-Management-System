@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-LOGIN_REDIRECT_URL = '/sports/'  # Change to your desired post-login URL
+LOGIN_REDIRECT_URL = '/admindashboard'  # Change to your desired post-login URL
 
 # URL to redirect after a logout
 LOGOUT_REDIRECT_URL = 'sports/login/' 

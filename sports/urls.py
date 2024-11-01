@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.home, name='index'),
     path('fixture/<int:fixture_id>/', views.fixture_detail, name='fixture_detail'),
     path('teams/', views.team_list, name='team_list'),
-    path('admin/', views.admin_dashboard, name='admin_dashboard'),
+    path('admindashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('teams/<int:team_id>/', views.team_detail, name='team_detail'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='index'), name='logout'),
