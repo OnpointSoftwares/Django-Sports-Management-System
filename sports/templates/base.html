@@ -75,6 +75,9 @@
                             <button type="submit" class="logout-button btn">Logout</button>
                         </form>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin_dashboard' %}">Admin</a>
+                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
